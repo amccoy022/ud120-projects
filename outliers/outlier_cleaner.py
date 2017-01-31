@@ -15,6 +15,17 @@ def outlierCleaner(predictions, ages, net_worths):
 
     ### your code goes here
 
-    
+    ###store list of errors
+    error = abs(predictions - net_worths)
+
+    ###zip up an unclean cleaned_data list
+    cleaned_data = zip(ages, net_worths, error)
+
+    ###sort the unclean clean data by error
+    cleaned_data.sort(key=lambda tup: tup[2])
+
+    #delete the last 10 entries which have the greatest error
+    cleaned_data = cleaned_data[:81]
+
     return cleaned_data
 
